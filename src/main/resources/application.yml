@@ -1,2 +1,27 @@
 server:
   port : 8081
+spring:
+  security:
+    user:
+      name: xkcoding
+      password: 123456
+  cache:
+    type: JCACHE
+    ehcache:
+      config: classpath:ehcache.xml
+#      spring.cache.ehcache.config=classpath:/ehcache.xml
+#      spring.cache.type=ehcache
+management:
+  # 端点信息接口使用的端口，为了和主系统接口使用的端口进行分离
+  server:
+    port: 8090
+    base-path: /sys
+  # 端点健康情况，默认值"never"，设置为"always"可以显示硬盘使用情况和线程情况
+  endpoint:
+    health:
+      show-details: always
+  # 设置端点暴露的哪些内容，默认["health","info"]，设置"*"代表暴露所有可访问的端点
+  endpoints:
+    web:
+      exposure:
+        include: '*'
